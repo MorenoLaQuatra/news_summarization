@@ -64,7 +64,7 @@ def core_number(G, weight=None):
         raise nx.NetworkXError(
                 'MultiGraph and MultiDiGraph types not supported.')
 
-    if G.number_of_selfloops()>0:
+    if len(list(nx.selfloop_edges(G)))>0:
         raise nx.NetworkXError(
                 'Input graph has self loops; the core number is not defined.',
                 'Consider using G.remove_edges_from(G.selfloop_edges()).')
@@ -75,9 +75,9 @@ def core_number(G, weight=None):
             return itertools.chain.from_iterable([G.predecessors_iter(v),
                                                   G.successors_iter(v)])
     else:
-        neighbors=G.neighbors_iter
+        neighbors=G.neighbors
     # modifed start
-    degrees=G.degree(weight=weight)
+    degrees=dict(G.degree(weight=weight))
     if weight:
         for k in degrees:
             degrees[k] = int(degrees[k])
