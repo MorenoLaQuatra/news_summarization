@@ -15,7 +15,7 @@ setup(
     install_requires=[
         "gensim >= 2.3.0",
         "matplotlib >= 2.1.1",
-        "networkx == 1.11",
+        "networkx >= 2.4",
         "nltk >= 3.2.4",
         "numpy >= 1.13.1",
         "pandas >= 0.20.3",
